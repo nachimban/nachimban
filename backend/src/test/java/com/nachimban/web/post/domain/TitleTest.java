@@ -34,5 +34,5 @@ class TitleTest {
         assertThatThrownBy(() -> Title.from(title))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    
+
 }

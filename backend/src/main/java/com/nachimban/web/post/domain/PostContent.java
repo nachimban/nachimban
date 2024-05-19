@@ -7,24 +7,24 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Embeddable
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
-public class Content {
+    @Embeddable
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @Getter
+public class PostContent {
     private static final int MAX_DESCRIPTION_LENGTH = 1000;
 
     @Lob
     @Column(nullable = false, length = 1000)
     private String content;
 
-    private Content(String content) {
+    private PostContent(String content) {
         this.content = content;
     }
 
-    public static Content from(String content) {
+    public static PostContent from(String content) {
         validate(content);
 
-        return new Content(content);
+        return new PostContent(content);
     }
 
     private static void validate(String content) {
