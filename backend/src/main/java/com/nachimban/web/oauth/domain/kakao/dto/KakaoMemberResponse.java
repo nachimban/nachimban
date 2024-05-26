@@ -2,6 +2,8 @@ package com.nachimban.web.oauth.domain.kakao.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.nachimban.web.oauth.domain.OauthMember;
+import com.nachimban.web.oauth.domain.OauthServerType;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +14,16 @@ public record KakaoMemberResponse(
         LocalDateTime connectedAt,
         KakaoAccount kakaoAccount
 ) {
+
+    public OauthMember extract() {
+        return OauthMember.of(
+                kakaoAccount().profile.nickname,
+                kakaoAccount().email,
+                kakaoAccount().profile.profileImageUrl,
+                id,
+                OauthServerType.KAKAO
+        );
+    }
 
     @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
     public record KakaoAccount(
