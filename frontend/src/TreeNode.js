@@ -12,12 +12,13 @@ const Tree = ({ node }) => {
     <div className="tree-box">
       <div className="tree-node">
         <div onClick={toggle} className="tree-node-label">
-          {node.name} {node.children && (isOpen ? '▼' : '▶')}
+        {node.children && (isOpen ? '-' : '+')} {node.name}
         </div>
         {isOpen && node.children && (
           <div className="tree-children">
             {node.children.map((child) => (
               <div key={child.id} className="tree-child">
+                <img src={child.thumbnail} alt="Thumbnail" className="review-thumbnail" />
                 {child.name}
               </div>
             ))}

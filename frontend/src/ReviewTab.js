@@ -4,24 +4,38 @@ import Tree from './Tree';
 function ReviewTab() {
   return (
     <div>
-      <div className='reviewtab'>
-        <Tree />
-      </div>
-      <div className='reviewtab'>
-        <Tree />
-      </div>
-      <div className='reviewtab'>
-        <Tree />
-      </div>
-      <div className='reviewtab'>
-        <Tree />
-      </div>
-      <div className='reviewtab'>
-        <Tree />
-      </div>
-      <div className='reviewtab'>
-        <Tree />
-      </div>
+      <ul className='reviewtab'>
+        <li>
+          <div className='review'>
+            <Tree />
+          </div>
+        </li>
+        <li>
+          <div className='review'>
+            <Tree />
+          </div>
+        </li>
+        <li>
+          <div className='review'>
+            <Tree />
+          </div>
+        </li>
+        <li>
+          <div className='review'>
+            <Tree />
+          </div>
+        </li>
+        <li>
+          <div className='review'>
+            <Tree />
+          </div>
+        </li>
+        <li>
+          <div className='review'>
+            <Tree />
+          </div>
+        </li>
+      </ul>
     </div>
   );
 }

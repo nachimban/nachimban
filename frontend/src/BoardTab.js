@@ -10,42 +10,56 @@ function BoardTab() {
 
   return (
     <div>
-        <div className='boardtab'>
-            <img src={board.thumbnail} alt="Thumbnail" className="thumbnail" />
-            <h3>{board.title}</h3>
-            <p>{board.writer}</p>
-            <p>{board.writtentime}</p>            
-        </div>
-        <div className='boardtab'>
-            <img src={board.thumbnail} alt="Thumbnail" className="thumbnail" />
-            <h3>{board.title}</h3>
-            <p>{board.writer}</p>
-            <p>{board.writtentime}</p>            
-        </div>
-        <div className='boardtab'>
-            <img src={board.thumbnail} alt="Thumbnail" className="thumbnail" />
-            <h3>{board.title}</h3>
-            <p>{board.writer}</p>
-            <p>{board.writtentime}</p>            
-        </div>
-        <div className='boardtab'>
-            <img src={board.thumbnail} alt="Thumbnail" className="thumbnail" />
-            <h3>{board.title}</h3>
-            <p>{board.writer}</p>
-            <p>{board.writtentime}</p>            
-        </div>
-        <div className='boardtab'>
-            <img src={board.thumbnail} alt="Thumbnail" className="thumbnail" />
-            <h3>{board.title}</h3>
-            <p>{board.writer}</p>
-            <p>{board.writtentime}</p>            
-        </div>
-        <div className='boardtab'>
-            <img src={board.thumbnail} alt="Thumbnail" className="thumbnail" />
-            <h3>{board.title}</h3>
-            <p>{board.writer}</p>
-            <p>{board.writtentime}</p>            
-        </div>
+        <ul className='boardtab'>
+            <li>
+                <div className='text'>
+                    <h3 className="title">{board.title}</h3>
+                    <p className="writer">{board.writer}</p>
+                    <p className="written-time">{board.writtentime}</p>
+                </div>                             
+                <img src={board.thumbnail} alt="Thumbnail" className="board-thumbnail" />
+            </li>
+            <li>
+                <div className='text'>
+                    <h3 className="title">{board.title}</h3>
+                    <p className="writer">{board.writer}</p>
+                    <p className="written-time">{board.writtentime}</p>
+                </div>                             
+                <img src={board.thumbnail} alt="Thumbnail" className="board-thumbnail" />
+            </li>
+            <li>
+                <div className='text'>
+                    <h3 className="title">{board.title}</h3>
+                    <p className="writer">{board.writer}</p>
+                    <p className="written-time">{board.writtentime}</p>
+                </div>                             
+                <img src={board.thumbnail} alt="Thumbnail" className="board-thumbnail" />
+            </li>
+            <li>
+                <div className='text'>
+                    <h3 className="title">{board.title}</h3>
+                    <p className="writer">{board.writer}</p>
+                    <p className="written-time">{board.writtentime}</p>
+                </div>                             
+                <img src={board.thumbnail} alt="Thumbnail" className="board-thumbnail" />
+            </li>
+            <li>
+                <div className='text'>
+                    <h3 className="title">{board.title}</h3>
+                    <p className="writer">{board.writer}</p>
+                    <p className="written-time">{board.writtentime}</p>
+                </div>                             
+                <img src={board.thumbnail} alt="Thumbnail" className="board-thumbnail" />
+            </li>
+            <li>
+                <div className='text'>
+                    <h3 className="title">{board.title}</h3>
+                    <p className="writer">{board.writer}</p>
+                    <p className="written-time">{board.writtentime}</p>
+                </div>                             
+                <img src={board.thumbnail} alt="Thumbnail" className="board-thumbnail" />
+            </li>
+        </ul>
     </div>
     
   );

@@ -42,7 +42,7 @@ function Header({ isLoggedIn, handleLogin }) {
 
   return (
     <header>
-      <h1 onClick={handleClickToM}>나침반</h1>
+      <h1 className='siteName' onClick={handleClickToM}>나침반</h1>
       <nav>
         <ul>
           <li><Link to="/main">홈</Link></li>

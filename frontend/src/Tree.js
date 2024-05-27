@@ -6,8 +6,14 @@ const treeData = {
   id: 1,
   name: '라벨명',
   children: [
-    { id: 2, name: '후기1' },
-    { id: 3, name: '후기2' },
+    { id: 2, 
+      name: '후기1',
+      thumbnail: 'img/background.png',
+    },
+    { id: 3, 
+      name: '후기2',
+      thumbnail: 'img/background.png',
+    },
   ],
 };
 

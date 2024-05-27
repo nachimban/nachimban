@@ -12,29 +12,25 @@ function Profile({ isLoggedIn }) {
     return <Navigate to="/" />;
   }
 
-  // 예제 사용자 데이터
   const user = {
-    name: '홍길동',
-    avatar: 'img/profile.jpg', // 프로필 사진 URL
-    background: 'img/background.png', // 배경 사진 URL
+    name: '닉네임',
+    avatar: 'img/profile.jpg',
+    background: 'img/background.png',
   };
 
   return (
-    <section id="profile" className="profile-container">
-      <div className="profile-card">
-        <img src={user.background} alt="Background" className="profile-background" />
-        <div className="profile-info">          
-          <img src={user.avatar} alt="Profile" className="profile-avatar" />        
-          <h3>{user.name}</h3>                   
-        </div>
+    <section className='profile-page'>
+      <div className="profile-container">
+        <img src={user.background} alt="Background" className="profile-background" />         
+        <img src={user.avatar} alt="Profile" className="profile-avatar" />        
+        <h3 className="username">{user.name}</h3>                
       </div>
-      <div>
+      <div className="Tab">
         <Tabs>
             <TabList>
                 <Tab>게시판</Tab>
                 <Tab>후기</Tab>
             </TabList>
-
             <TabPanel>
                 <BoardTab className="boardtab"/>
             </TabPanel>

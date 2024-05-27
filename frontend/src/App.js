@@ -6,7 +6,6 @@ import Main from './Main';
 import Board from './Board';
 import Review from './Review';
 import Profile from './Profile';
-import Footer from './Footer';
 import Setting from './Setting';
 
 function App() {
@@ -29,7 +28,6 @@ function App() {
             <Route path="/setting" element={<Setting isLoggedIn={isLoggedIn} />} />
           </Routes>
         </main>
-        <Footer isLoggedIn={isLoggedIn} handleLogin={handleLogin} />
       </div>
     </Router>
   );
