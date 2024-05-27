@@ -1,6 +1,6 @@
 package com.nachimban.web.member.domain;
 
-import com.nachimban.web.oauth.domain.OauthServerType;
+import com.nachimban.web.auth.oauth.domain.OauthServerType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
@@ -20,12 +20,19 @@ public class OauthId {
     @Enumerated(EnumType.STRING)
     private OauthServerType oauthServerType;
 
-    public OauthId(
+    private OauthId(
             Long oauthServerId,
             OauthServerType oauthServerType
     ) {
         this.oauthServerId = oauthServerId;
         this.oauthServerType = oauthServerType;
+    }
+
+    public static OauthId of(
+            Long oauthServerId,
+            OauthServerType oauthServerType
+    ) {
+        return new OauthId(oauthServerId, oauthServerType);
     }
 
 }

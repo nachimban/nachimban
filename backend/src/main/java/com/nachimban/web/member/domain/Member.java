@@ -70,4 +70,16 @@ public class Member extends BaseTimeEntity {
         );
     }
 
+    public String getNickname() {
+        return nickname.getNickName();
+    }
+
+    public String getEmail() {
+        return email.getEmail();
+    }
+
+    public String getImageUrl() {
+        return imageUrl.getImageUrl();
+    }
+
 }
