@@ -1,4 +1,4 @@
-package com.nachimban.web.oauth.domain.kakao;
+package com.nachimban.web.auth.oauth.domain.kakao;
 
 
 import org.springframework.boot.context.properties.ConfigurationProperties;

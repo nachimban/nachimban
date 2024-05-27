@@ -1,6 +1,6 @@
 package com.nachimban.web.common.config;
 
-import com.nachimban.web.oauth.domain.kakao.KakaoApiClient;
+import com.nachimban.web.auth.oauth.domain.kakao.KakaoApiClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;

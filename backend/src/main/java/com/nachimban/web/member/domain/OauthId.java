@@ -1,6 +1,6 @@
 package com.nachimban.web.member.domain;
 
-import com.nachimban.web.oauth.domain.OauthServerType;
+import com.nachimban.web.auth.oauth.domain.OauthServerType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;

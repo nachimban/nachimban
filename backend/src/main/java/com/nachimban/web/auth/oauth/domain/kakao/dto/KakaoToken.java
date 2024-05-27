@@ -1,4 +1,4 @@
-package com.nachimban.web.oauth.domain.kakao.dto;
+package com.nachimban.web.auth.oauth.domain.kakao.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

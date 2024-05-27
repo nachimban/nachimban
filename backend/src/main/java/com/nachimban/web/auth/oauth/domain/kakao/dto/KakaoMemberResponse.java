@@ -1,9 +1,9 @@
-package com.nachimban.web.oauth.domain.kakao.dto;
+package com.nachimban.web.auth.oauth.domain.kakao.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.nachimban.web.oauth.domain.OauthMember;
-import com.nachimban.web.oauth.domain.OauthServerType;
+import com.nachimban.web.auth.oauth.domain.OauthMember;
+import com.nachimban.web.auth.oauth.domain.OauthServerType;
 
 import java.time.LocalDateTime;
 

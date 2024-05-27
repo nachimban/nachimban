@@ -1,4 +1,4 @@
-package com.nachimban.web.oauth.domain;
+package com.nachimban.web.auth.oauth.domain;
 
 import com.nachimban.web.member.domain.OauthId;
 import lombok.Getter;

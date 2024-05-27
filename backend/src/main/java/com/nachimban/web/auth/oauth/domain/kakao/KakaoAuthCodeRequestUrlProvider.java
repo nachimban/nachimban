@@ -1,7 +1,7 @@
-package com.nachimban.web.oauth.domain.kakao;
+package com.nachimban.web.auth.oauth.domain.kakao;
 
-import com.nachimban.web.oauth.domain.AuthCodeRequestUrlProvider;
-import com.nachimban.web.oauth.domain.OauthServerType;
+import com.nachimban.web.auth.oauth.domain.AuthCodeRequestUrlProvider;
+import com.nachimban.web.auth.oauth.domain.OauthServerType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 

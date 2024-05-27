@@ -1,10 +1,10 @@
-package com.nachimban.web.oauth.domain.kakao;
+package com.nachimban.web.auth.oauth.domain.kakao;
 
-import com.nachimban.web.oauth.domain.OauthMember;
-import com.nachimban.web.oauth.domain.OauthMemberClient;
-import com.nachimban.web.oauth.domain.OauthServerType;
-import com.nachimban.web.oauth.domain.kakao.dto.KakaoMemberResponse;
-import com.nachimban.web.oauth.domain.kakao.dto.KakaoToken;
+import com.nachimban.web.auth.oauth.domain.kakao.dto.KakaoToken;
+import com.nachimban.web.auth.oauth.domain.OauthMember;
+import com.nachimban.web.auth.oauth.domain.OauthMemberClient;
+import com.nachimban.web.auth.oauth.domain.OauthServerType;
+import com.nachimban.web.auth.oauth.domain.kakao.dto.KakaoMemberResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
