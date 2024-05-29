@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -56,6 +57,26 @@ public class Post extends BaseTimeEntity {
                 PostContent.from(content),
                 writer
         );
+    }
+
+    public boolean isWriter(Member member) {
+        return Objects.equals(this.writer.getId(), member.getId());
+    }
+
+    public void changeTitle(String title) {
+        this.title = Title.from(title);
+    }
+
+    public void changeContent(String content) {
+        this.postContent = PostContent.from(content);
+    }
+
+    public String getTitle() {
+        return title.getTitle();
+    }
+
+    public String getPostContent() {
+        return postContent.getContent();
     }
 
 }
