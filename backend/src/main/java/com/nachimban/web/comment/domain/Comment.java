@@ -14,6 +14,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
@@ -48,4 +50,15 @@ public class Comment extends BaseTimeEntity {
         );
     }
 
+    public String getCommentContent() {
+        return commentContent.getContent();
+    }
+
+    public boolean isCommenter(Member member) {
+        return Objects.equals(this.commenter.getId(), member.getId());
+    }
+
+    public void changeContent(String content) {
+        this.commentContent = CommentContent.from(content);
+    }
 }
