@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@RestController(value = "/api")
 public class AuthController {
     public static final int A_WEEK = 7 * 24 * 60 * 60;
 

@@ -70,6 +70,10 @@ public class Member extends BaseTimeEntity {
         );
     }
 
+    public void changeNickname(Nickname nickname) {
+        this.nickname = nickname;
+    }
+
     public String getNickname() {
         return nickname.getNickName();
     }
