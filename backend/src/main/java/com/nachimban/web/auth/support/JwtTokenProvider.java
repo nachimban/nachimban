@@ -62,7 +62,13 @@ public class JwtTokenProvider {
         throw new IllegalStateException();
     }
 
-    public void validateToken(String token) {
+    public String getPayload(String token) {
+        validateToken(token);
+
+        return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
+    }
+
+    private void validateToken(String token) {
         if (isExpired(token)) {
             throw new IllegalStateException();
         }
