@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
-@RestController
+@RestController("/api")
 public class CommentController {
     private final CommentService commentService;
 
