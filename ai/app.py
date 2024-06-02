@@ -17,15 +17,17 @@ def home():
 def predict_api():
     # JSON 요청 파싱
     data = request.json
+
     if data is None:
         return jsonify({'error': 'Invalid request. JSON payload is missing.'}), 400
+
     columns = ['GENDER', 'AGE_GRP', 'TRAVEL_STYL_1', 'TRAVEL_STYL_2', 'TRAVEL_STYL_3',
            'TRAVEL_STYL_4', 'TRAVEL_STYL_5', 'TRAVEL_STYL_6', 'TRAVEL_STYL_7',
            'TRAVEL_STYL_8', 'TRAVEL_MOTIVE_1', 'TRAVEL_COMPANIONS_NUM',
            'TRAVEL_MISSION_INT']
 
     regions = pd.read_csv('regions.csv').dropna(subset=['SIDO_NM'])
-    predicts = pd.DataFrame([], columns=['REGION', 'SCORE'])
+    predicts = pd.DataFrame([], columns=['region', 'score'])
 
     # 예측
     for region in regions['SIDO_NM']:
@@ -37,7 +39,7 @@ def predict_api():
 
         score = model.predict(input)
 
-        predicts = pd.concat([predicts, pd.DataFrame([[region, score]], columns=['REGION', 'SCORE'])])
+        predicts = pd.concat([predicts, pd.DataFrame([[region, score]], columns=['region', 'score'])])
 
     # 상위 10개 결과만 선택
     top_10_results = predicts.head(10)
