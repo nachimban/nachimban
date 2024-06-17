@@ -1,86 +1,118 @@
 import React, {useState} from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from 'styled-components';
 import NotificationModal from './NotificationModal.js'
 import ProfileContextMenu from './ProfileContextMenu.js'
 
 function Header({ isLoggedIn, handleLogin }) {
-  const [isContextMenuVisible, setIsContextMenuVisible] = useState(false);
-  const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
-  const [isNModalVisible, setIsNModalVisible] = useState(false);
-  const [NModalPosition, setNModalPosition] = useState({ x: 0, y: 0 });
+    const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
+    const [isContextMenuVisible, setIsContextMenuVisible] = useState(false);
+    const [isNModalVisible, setIsNModalVisible] = useState(false);
+    const [NModalPosition, setNModalPosition] = useState({ x: 0, y: 0 });
 
-  const user = {
-    avatar: 'img/profile.jpg',
-    notification: 'img/notification.png'
-  };
+    const user = {
+        avatar: 'img/profile.jpg',
+        notification: 'img/notification.png'
+    };
 
-  const navigate = useNavigate();
+    const HeaderRight = styled.div`
+        float: right;
+    `;
 
-  function handleClickToM() {
-    navigate("/main");
-  }
+    const Notification = styled.img`        
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+    `;
 
-  function handleProfileClick(e) {
-    const { clientX, clientY } = e;
-    setContextMenuPosition({ x: clientX, y: clientY });
-    setIsContextMenuVisible(true);
-  }
+    const ProfileAvatar = styled.img`
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin: 10px;
+        cursor: pointer;
+    `;
 
-  function handleCloseContextMenu() {
-    setIsContextMenuVisible(false);
-  }
+    const CloseContextMenu = styled.div`
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        zIndex: 999;
+    `;
 
-  function handleNoficationClick(e) {
-    const { clientX, clientY } = e;
-    setNModalPosition({ x: clientX, y: clientY });
-    setIsNModalVisible(true);
-  }
+    const SiteName = styled.h1`
+        font-weight: bold;
+        text-decoration: none;
+        margin: 20px;
+        color: #333;
+    `;
 
-  function handleCloseNModal() {
-    setIsNModalVisible(false);
-  }
+    const Menu = styled.ul`
+        list-style: none;
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+    `;
 
-  return (
-    <header>
-      <h1 className='siteName' onClick={handleClickToM}>나침반</h1>
-      <nav>
-        <ul>
-          <li><Link to="/main">홈</Link></li>
-          <li><Link to="/board">게시판</Link></li>
-          <li><Link to="/review">후기</Link></li>
-        </ul>
-      </nav>
-      <div>
-        {isContextMenuVisible && (
-          <>
-            <ProfileContextMenu position={contextMenuPosition} onClose={handleCloseContextMenu} isLoggedIn={isLoggedIn} handleLogin={handleLogin}/>
-            <div 
-              style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 999 }} 
-              onClick={handleCloseContextMenu} 
-            ></div>
-          </>
-        )}
-        <NotificationModal isOpen={isNModalVisible} position={NModalPosition} closeModal={handleCloseNModal} />
-      </div>      
-      {isLoggedIn ? (
-        <div style={{float: 'right'}}>
-          <img src={user.notification} alt="Notification" className="header-profile-notification" onClick={handleNoficationClick}/>
-          <img
-            src={user.avatar} 
-            alt="Profile" 
-            className="header-profile-avatar" 
-            onClick={handleProfileClick}
-            style={{ cursor: 'pointer' }}
-            /> 
-        </div>      
-      ) : (
-        <button onClick={handleLogin} className='loginButton'>
-          로그인
-        </button>
-      )}
-      
-    </header>
-  );
+    const MenuComponent = styled.li`
+        list-style: none;
+        text-decoration: none;
+        margin: 10px;
+        font-size: 18px;
+        color: #333;
+    `;
+
+    function handleProfileClick(e) {
+        const { clientX, clientY } = e;
+        setContextMenuPosition({ x: clientX, y: clientY });
+        setIsContextMenuVisible(true);
+    }
+
+    function handleNoficationClick(e) {
+        const { clientX, clientY } = e;
+        setNModalPosition({ x: clientX, y: clientY });
+        setIsNModalVisible(true);
+    }
+
+    function handleCloseContextMenu() {
+        setIsContextMenuVisible(false);
+    }
+
+    function handleCloseNModal() {
+        setIsNModalVisible(false);
+    }    
+
+    return(
+        <section id='header' style={{width: '100%', height: '80px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#f8f8f8'}}>
+            <SiteName><Link to="/main" style={{color: '#333', textDecoration: 'none'}}>나침반</Link></SiteName>
+            <Menu>
+                <MenuComponent><Link to="/board" style={{color: '#333', textDecoration: 'none'}}>게시판</Link></MenuComponent>
+                <MenuComponent><Link to="/review" style={{color: '#333', textDecoration: 'none'}}>후기</Link></MenuComponent>
+                <MenuComponent><Link to="/test" style={{color: '#333', textDecoration: 'none'}}>테스트</Link></MenuComponent>
+            </Menu>
+            <HeaderRight>
+                {isContextMenuVisible && (
+                    <div>
+                        <ProfileContextMenu position={contextMenuPosition} onClose={handleCloseContextMenu} isLoggedIn={isLoggedIn} handleLogin={handleLogin}/>
+                        <CloseContextMenu onClick={handleCloseContextMenu}></CloseContextMenu>
+                    </div>
+                )}
+                <NotificationModal isOpen={isNModalVisible} position={NModalPosition} closeModal={handleCloseNModal}/>
+                {isLoggedIn ? (
+                    <div>
+                        <Notification src={user.notification} onClick={handleNoficationClick}/>                                    
+                        <ProfileAvatar src={user.avatar} onClick={handleProfileClick}/>
+                    </div>                                                                                                      
+                ) : (
+                    <Button onClick={handleLogin} as="input" type="button" value="로그인" style={{margin: '20px'}}/>
+                )}
+            </HeaderRight> 
+        </section>
+    );
 }
 
 export default Header;

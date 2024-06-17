@@ -1,45 +1,75 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
-import './Profile.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import ReviewTab from './ReviewTab';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import styled from 'styled-components';
 import BoardTab from './BoardTab';
+import ReviewTab from './ReviewTab';
 
 function Profile({ isLoggedIn }) {
+  const ProfileContainer = styled.div`
+    position: relative;
+  `;
 
-  if (!isLoggedIn) {
-    return <Navigate to="/" />;
-  }
+  const ProfileBackground = styled.img`
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+  `;
+
+  const ProfileAvatar = styled.img`
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+    position: absolute;
+    bottom: -30%;
+    left: 2%;
+    z-index: 1;
+  `;
+
+  const Nickname = styled.h3`
+    font-size: 24px;
+    color: #333;
+    position: absolute;
+    bottom: -50%; 
+    left: 8%; 
+    transform: translateX(-50%); 
+  `;
+
+  const TabContainer = styled.div`
+    margin: 2%;
+    position: relative;
+    top: 150px;
+  `;
 
   const user = {
-    name: '닉네임',
-    avatar: 'img/profile.jpg',
-    background: 'img/background.png',
+    "id" : 1,
+    "nickName" : "member",
+    "email" : "member@naver.com",
+    "imageUrl" : "img/profile.jpg",
+    "backgroundImage" : 'img/background.png'
   };
 
   return (
-    <section className='profile-page'>
-      <div className="profile-container">
-        <img src={user.background} alt="Background" className="profile-background" />         
-        <img src={user.avatar} alt="Profile" className="profile-avatar" />        
-        <h3 className="username">{user.name}</h3>                
-      </div>
-      <div className="Tab">
-        <Tabs>
-            <TabList>
-                <Tab>게시판</Tab>
-                <Tab>후기</Tab>
-            </TabList>
-            <TabPanel>
-                <BoardTab className="boardtab"/>
-            </TabPanel>
-            <TabPanel>                
-                <ReviewTab className="reviewtab"/>
-            </TabPanel>
+    <section id="profile">
+      <ProfileContainer>
+        <ProfileBackground src={user.backgroundImage} alt="Background"/>         
+        <ProfileAvatar src={user.imageUrl} alt="Profile"/>        
+        <Nickname>{user.nickName}</Nickname>                
+      </ProfileContainer>
+      <TabContainer>
+        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">      
+          <Tab eventKey="board" title="Board">
+            <BoardTab/>
+          </Tab>
+          <Tab eventKey="review" title="Review">
+            <ReviewTab/>
+          </Tab>
         </Tabs>
-      </div>
-      
+      </TabContainer>
     </section>
   );
 }
