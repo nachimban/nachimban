@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class FlaskApiResponseDto {
 
-    private String region;
+    private String item;
     private double score;
 
 }

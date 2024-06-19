@@ -7,14 +7,14 @@ public class FlaskApiRequestDto {
 
     private String gender;
     private Double ageGrp;
-    private Integer travelStyl1;
-    private Integer travelStyl2;
-    private Integer travelStyl3;
-    private Integer travelStyl4;
-    private Integer travelStyl5;
-    private Integer travelStyl6;
-    private Integer travelStyl7;
-    private Integer travelStyl8;
+    private Integer travelStyle1;
+    private Integer travelStyle2;
+    private Integer travelStyle3;
+    private Integer travelStyle4;
+    private Integer travelStyle5;
+    private Integer travelStyle6;
+    private Integer travelStyle7;
+    private Integer travelStyle8;
     private Integer travelMotive1;
     private Double travelCompanionsNum;
     private Integer travelMissionInt;
