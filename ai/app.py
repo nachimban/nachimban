@@ -29,7 +29,7 @@ def predict_api():
            'TRAVEL_STYL_8', 'TRAVEL_MOTIVE_1', 'TRAVEL_COMPANIONS_NUM',
            'TRAVEL_MISSION_INT']
 
-    predicts = pd.DataFrame([], columns=['region', 'score'])
+    predicts = pd.DataFrame([], columns=['item', 'score'])
 
     # 예측
     for region in regions['SIDO_NM']:
@@ -41,7 +41,7 @@ def predict_api():
 
         try:
             score = region_model.predict(input)
-            predicts = pd.concat([predicts, pd.DataFrame([[region, score]], columns=['region', 'score'])])
+            predicts = pd.concat([predicts, pd.DataFrame([[region, score]], columns=['item', 'score'])])
         except Exception as e:
             logging.debug(f"Error predicting for {region}: {e}")
 
@@ -55,6 +55,7 @@ def predict_api():
 # 관광지 추천
 @app.route('/predict/<region_nm>', methods=['POST'])
 def predict_places_api(region_nm):
+
     # Json 요청 파싱
     data = request.json
     if data is None:
@@ -65,14 +66,13 @@ def predict_places_api(region_nm):
            'TRAVEL_STYL_8', 'TRAVEL_MOTIVE_1', 'TRAVEL_COMPANIONS_NUM',
            'TRAVEL_MISSION_INT']
 
-    predicts = pd.DataFrame([], columns=['place', 'score'])
+    predicts = pd.DataFrame([], columns=['item', 'score'])
     filtered_places = places[places['SIDO_NM'] == region_nm].drop_duplicates(subset=['VISIT_AREA_NM'])
 
     if region_nm not in regions['SIDO_NM'].values:
         return jsonify({'error': 'Invalid request. Region does not exist.'}), 400
 
     # 예측
-
     for idx, place in filtered_places.iterrows():
         if place['VISIT_AREA_NM'] == 'NaN':
             continue
@@ -84,7 +84,7 @@ def predict_places_api(region_nm):
 
         try:
             score = place_model.predict(input)
-            predicts = pd.concat([predicts, pd.DataFrame([[place['VISIT_AREA_NM'], score]], columns=['place', 'score'])])
+            predicts = pd.concat([predicts, pd.DataFrame([[place['VISIT_AREA_NM'], score]], columns=['item', 'score'])])
         except Exception as e:
             logging.debug(f"Error predicting for {place['VISIT_AREA_NM']} with type_cd {place['VISIT_AREA_TYPE_CD']}: {e}")
 
